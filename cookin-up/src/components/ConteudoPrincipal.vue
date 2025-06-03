@@ -1,38 +1,23 @@
 <script lang="ts">
 import SelecionarIngredientes from './SelecionarIngredientes.vue';
+import SuaLista from './SuaLista.vue';
 
 export default {
-    data(){
-        return{
-            ingredientes: ['Alho', 'Manteiga', 'Orégano']
-        }
-    },
-    components: { SelecionarIngredientes }
+  data() {
+    return {
+      ingredientes: ['Alho', 'Manteiga', 'Orégano']
+    };
+  },
+  components: { SelecionarIngredientes, SuaLista }
 }
 </script>
 
 <template>
-    <main class="conteudo-principal">
-        <section>
-            <span class="subtitulo-lg sua-lista-texto">
-                Sua lista:
-            </span>
-            <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
-               <!-- v-for: para evitar repetição no coógigo e v-vind: para ajudar na redenrização deixando cada item da lista com um identificador único -->
-                <li v-for="ingrediente in ingredientes" v-bind:key="ingrediente" class="ingrediente">
-                  {{ ingrediente }}
-                </li>
-            </ul>
+  <main class="conteudo-principal">
+    <SuaLista :ingredientes="ingredientes" />
 
-            <p v-else class="paragrafo lista-vazia">
-              <img src="../assets/images/icones/lista-vazia.svg" alt="Icone de pesquisa">
-              Sua lista está vazia, selecione ingredientes para iniciar.
-            </p>
-
-        </section>
-
-        <SelecionarIngredientes />
-    </main>
+    <SelecionarIngredientes />
+  </main>
 </template>
 
 <style scoped>
@@ -60,18 +45,6 @@ export default {
   justify-content: center;
   gap: 1rem 1.5rem;
   flex-wrap: wrap;
-}
-
-.ingrediente {
-  display: inline-block;
-  border-radius: 0.5rem;
-  min-width: 4.25rem;
-  padding: 0.5rem;
-  text-align: center;
-    transition: 0.2s;
-    color: var(--creme, #FFFAF3);
-  background: var(--coral, #F0633C);
-  font-weight: 700;
 }
 
 .lista-vazia {
