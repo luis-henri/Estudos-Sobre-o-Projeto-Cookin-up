@@ -6,7 +6,7 @@ import IngredienteSelecionavel from './IngredienteSelecionavel.vue';
 
 export default {
     components: { Tag, IngredienteSelecionavel },
-    emits: ['adicionarIngrediente'],
+    emits: ['adicionarIngrediente', 'removerIngrediente'],
     props: {
         categoria: { type: Object as PropType<ICategoria>, required: true }
     }
@@ -26,6 +26,7 @@ export default {
                 <IngredienteSelecionavel 
                   :ingrediente="ingrediente"
                   @adicionar-ingrediente="$emit('adicionarIngrediente', $event)"
+                  @remover-ingrediente="$emit('removerIngrediente', $event)"
                 />
             </li>
         </ul>
