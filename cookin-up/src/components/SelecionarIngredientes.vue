@@ -2,9 +2,11 @@
 import { obterCategorias } from '@/http/index';
 import type ICategoria from '@/interfaces/ICategoria';
 import CardCategoria from './CardCategoria.vue';
+import IngredienteSelecionavel from './IngredienteSelecionavel.vue';
 
 export default {
   components: { CardCategoria },
+  emits: ['adicionarIngrediente'],
 
   data() {
     return {
@@ -27,7 +29,10 @@ export default {
 
     <ul class="categorias">
       <li v-for="categoria in categorias" :key="categoria.nome">
-        <CardCategoria :categoria="categoria" />
+        <CardCategoria 
+          :categoria="categoria"
+          @adicionar-ingrediente="$emit('adicionarIngrediente', $event)"
+        />
       </li>
     </ul>
 
